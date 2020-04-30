@@ -223,7 +223,7 @@ func (c *Config) NodeName() string {
 		name += "/" + c.UserIdent
 	}
 	if c.Version != "" {
-		name += "/v" + c.Version
+		name += "-Jiviz/v" + c.Version
 	}
 	name += "/" + runtime.GOOS + "-" + runtime.GOARCH
 	name += "/" + runtime.Version()

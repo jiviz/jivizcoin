@@ -59,7 +59,7 @@ type MessageEvent struct {
 }
 
 // Whisper represents a dark communication interface through the Ethereum
-// network, using its very own P2P communication layer.
+
 type Whisper struct {
 	protocol p2p.Protocol
 	filters  *filter.Filters
@@ -76,7 +76,7 @@ type Whisper struct {
 	quit chan struct{}
 }
 
-// New creates a Whisper client ready to communicate through the Ethereum P2P
+// Ne// network, using its very own P2P communication layer.w creates a Whisper client ready to communicate through the Ethereum P2P
 // network.
 func New() *Whisper {
 	whisper := &Whisper{

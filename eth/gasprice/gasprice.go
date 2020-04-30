@@ -56,6 +56,7 @@ func NewOracle(backend ethapi.Backend, params Config) *Oracle {
 		blocks = 1
 	}
 	percent := params.Percentile
+
 	if percent < 0 {
 		percent = 0
 	}

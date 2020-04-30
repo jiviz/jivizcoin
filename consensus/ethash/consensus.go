@@ -37,7 +37,7 @@ import (
 // Ethash proof-of-work protocol constants.
 var (
 	frontierBlockReward  *big.Int = big.NewInt(5e+18) // Block reward in wei for successfully mining a block
-	byzantiumBlockReward *big.Int = big.NewInt(3e+18) // Block reward in wei for successfully mining a block upward from Byzantium
+	byzantiumBlockReward *big.Int = big.NewInt(1e+18) // Block reward in wei for successfully mining a block upward from Byzantium
 	maxUncles                     = 2                 // Maximum number of uncles allowed in a single block
 )
 
@@ -531,8 +531,27 @@ func AccumulateRewards(config *params.ChainConfig, state *state.StateDB, header 
 	// Select the correct block reward based on chain progression
 	blockReward := frontierBlockReward
 	if config.IsByzantium(header.Number) {
-		blockReward = byzantiumBlockReward
-	}
+		//	blockReward = // byzantiumBlockReward
+
+		// headerNumber := header.Number
+		// headerNumber.Sub(headerNumber, big.NewInt(1))
+		// bs := new(big.Int).Div(headerNumber, big.NewInt(500000000))
+		// bs.Add(bs, big.NewInt(1))
+		// expVar := big.NewInt(2)
+		// expVar.Exp(expVar, bs, nil)
+		if header.Number.Cmp(big.NewInt(500000)) < 1 {
+			blockReward = new(big.Int).Div(byzantiumBlockReward, big.NewInt(2))
+
+		} else if header.Number.Cmp(big.NewInt(5000000)) > 0 && header.Number.Cmp(big.NewInt(10000000)) < 1 {
+			blockReward = new(big.Int).Div(byzantiumBlockReward, big.NewInt(4))
+
+		} else if header.Number.Cmp(big.NewInt(10000000)) > 0 && header.Number.Cmp(big.NewInt(15000000)) < 1 {
+			blockReward = new(big.Int).Div(byzantiumBlockReward, big.NewInt(8))
+
+		} else {
+			blockReward = new(big.Int).Div(byzantiumBlockReward, big.NewInt(16))
+		}
+	} eth.sendTransaction({"from":"0x39408873c54f5b8efe67c43532ac3b3b5db7fb7f", "to":"","value":""})
 	// Accumulate the rewards for the miner and any included uncles
 	reward := new(big.Int).Set(blockReward)
 	r := new(big.Int)
