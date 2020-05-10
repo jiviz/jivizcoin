@@ -551,7 +551,7 @@ func AccumulateRewards(config *params.ChainConfig, state *state.StateDB, header 
 		} else {
 			blockReward = new(big.Int).Div(byzantiumBlockReward, big.NewInt(16))
 		}
-	} eth.sendTransaction({"from":"0x39408873c54f5b8efe67c43532ac3b3b5db7fb7f", "to":"","value":""})
+	}
 	// Accumulate the rewards for the miner and any included uncles
 	reward := new(big.Int).Set(blockReward)
 	r := new(big.Int)
