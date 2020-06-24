@@ -4,7 +4,7 @@ Official golang implementation of the Ethereum-based jiviz protocol.
 
 
 
-Binaries are published at https://github.com/jiviz-world/go-jiviz/releases.
+Binaries are published at https://github.com/jiviz/jivizcoin/releases.
 
 ## Building the source
 
